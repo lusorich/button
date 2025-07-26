@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>GreatFrontEnd Projects</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="icon" href="img/favicon.ico" sizes="any" />
+    <style>
+      /* You may write styles inside this <style> tag or within `css/style.css`. */
+    </style>
+  </head>
+  <body>
+<template id="custom-button-template">
+  <style>
+    button {
+      
+    }
+
+    ::slotted([slot="icon-left"]),
+    ::slotted([slot="icon-right"]) {
+      display: flex; /* чтобы иконка была флекс-элементом и корректно позиционировалась */
+      align-items: center;
+    }
+
+    /* ==== Variant Styles ==== */
+    :host([variant="primary"]) button {
+      background-color: #007bff;
+      color: white;
+      border-color: #007bff;
+    }
+
+    :host([variant="primary"]) button:hover {
+      background-color: #0056b3;
+      border-color: #0056b3;
+    }
+
+    /* ==== Size Styles ==== */
+    :host([size="small"]) button {
+      padding: 6px 12px;
+      font-size: 14px;
+      gap: 6px;
+    }
+
+    :host([size="large"]) button {
+      padding: 14px 28px;
+      font-size: 18px;
+      gap: 10px;
+    }
+
+    /* ==== Disabled ==== */
+    :host([disabled]) button {
+        opacity: 0.6;
+        cursor: not-allowed;
+    }
+
+    /* Дополнительные CSS-переменные для внешней кастомизации */
+    /* Пример: --button-background-color: red; */
+    button {
+        --button-background-color: var(--_button-background-color, inherit);
+        --button-color: var(--_button-color, inherit);
+        --button-border-color: var(--_button-border-color, inherit);
+
+        background-color: var(--button-background-color);
+        color: var(--button-color);
+        border-color: var(--button-border-color);
+    }
+  </style>
+  <button>
+    <slot name="icon-left"></slot>
+    <slot></slot> <!-- Default slot for button text -->
+    <slot name="icon-right"></slot>
+  </button>
+</template>
+
+<svg width="0" height="0" class="hidden">
+  <symbol fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 21 20" id="star">
+    <g clip-path="url(#a)">
+      <path d="M10.5 15.22 4.62 18.5l1.32-6.61L.99 7.33l6.69-.8L10.5.42l2.82 6.11 6.7.8-4.95 4.57 1.3 6.6-5.87-3.28Zm0-1.91 3.54 1.98-.8-3.98 2.99-2.75-4.03-.48-1.7-3.68-1.7 3.68-4.03.48 2.98 2.75-.79 3.98 3.54-1.98Z" fill="#171717"></path>
+    </g>
+    <defs>
+      <clipPath id="a">
+        <path fill="#fff" transform="translate(.5)" d="M0 0h20v20H0z"></path>
+      </clipPath>
+    </defs>
+  </symbol>
+</svg>
+
+	  <main>
+        <custom-button variant="primary">Button CTA</custom-button>
+        <custom-button variant="primary">
+            <slot name="icon-left">
+<svg class="icon">
+  <use xlink:href="#star"></use>
+</svg>
+			</slot>              
+			Button CTA
+		</custom-button>
+        <custom-button variant="primary">
+        Button CTA
+		<slot name="icon-right">
+<svg class="icon">
+  <use xlink:href="#star"></use>
+</svg>
+		</slot>
+		</custom-button>
+        <custom-button variant="primary">Button CTA</custom-button>
+        <custom-button variant="primary"><svg class="icon">
+  <use xlink:href="#star"></use>
+</svg></custom-button>
+	  </main>
+    
+
+    <div class="credits" data-gfe-screenshot-exclude="true"> A challenge by <a href="https://www.greatfrontend.com/projects?ref=challenges" target="_blank">GreatFrontEnd Projects</a>. Built by <a href="https://www.greatfrontend.com/projects/u/dreamonautre" target="_blank">dreamonaut</a>.</div>
+
+
+
+
+    <script type="text/javascript" src="js/index.js" ></script>
+  </body>
+</html>
