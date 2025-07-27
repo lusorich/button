@@ -6,124 +6,141 @@
     <title>GreatFrontEnd Projects</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="css/style.css" />
     <script src="https://cdn.tailwindcss.com"></script>
-
     <link rel="icon" href="img/favicon.ico" sizes="any" />
     <style>
-      /* You may write styles inside this <style> tag or within `css/style.css`. */
+      /* You may write styles inside this 
+			<style> tag or within `css/style.css`. */
     </style>
   </head>
   <body>
-<template id="custom-button-template">
-  <style>
-    button {
-      
-    }
+    <template id="custom-button-template">
+      <style>
+        button {
+		  font-family: "Noto Sans";
+          cursor: pointer;
+		  border: unset;
+		  display: flex;
+		  align-items: center;
+		}
 
-    ::slotted([slot="icon-left"]),
-    ::slotted([slot="icon-right"]) {
-      display: flex; /* чтобы иконка была флекс-элементом и корректно позиционировалась */
-      align-items: center;
-    }
+		:host {
+		}
 
-    /* ==== Variant Styles ==== */
-    :host([variant="primary"]) button {
-      background-color: #007bff;
-      color: white;
-      border-color: #007bff;
-    }
+		::slotted([slot="icon-left"]) {
+          padding-right: 6px;
+		}
 
-    :host([variant="primary"]) button:hover {
-      background-color: #0056b3;
-      border-color: #0056b3;
-    }
+		::slotted([slot="icon-right"]) {
+          padding-left: 6px;
+		}
 
-    /* ==== Size Styles ==== */
-    :host([size="small"]) button {
-      padding: 6px 12px;
-      font-size: 14px;
-      gap: 6px;
-    }
+        /* ==== Variant Styles ==== */
+        :host([variant="primary"]) button {
+          background-color: #4338CA;
+          color: white;
+          box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.10), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+		  border-radius: 4px;
+        }
 
-    :host([size="large"]) button {
-      padding: 14px 28px;
-      font-size: 18px;
-      gap: 10px;
-    }
+        :host([variant="primary"]) button:hover {
+        
+        }
 
-    /* ==== Disabled ==== */
-    :host([disabled]) button {
-        opacity: 0.6;
-        cursor: not-allowed;
-    }
+        /* ==== Size Styles ==== */
+        :host([size="md"]) button {
+          font-size: 14px;
+		  font-weight: 500;
+		  line-height: 20px;
+		  padding: 10px 14px;
+        }
 
-    /* Дополнительные CSS-переменные для внешней кастомизации */
-    /* Пример: --button-background-color: red; */
-    button {
-        --button-background-color: var(--_button-background-color, inherit);
-        --button-color: var(--_button-color, inherit);
-        --button-border-color: var(--_button-border-color, inherit);
+        :host([size="lg"]) button {
+          font-size: 16px;
+		  font-weight: 500;
+		  line-height: 24px;
+		  padding: 10px 16px;
+        }
 
-        background-color: var(--button-background-color);
-        color: var(--button-color);
-        border-color: var(--button-border-color);
-    }
-  </style>
-  <button>
-    <slot name="icon-left"></slot>
-    <slot></slot> <!-- Default slot for button text -->
-    <slot name="icon-right"></slot>
-  </button>
-</template>
+        :host([size="xl"]) button {
+          font-size: 16px;
+		  font-weight: 500;
+		  line-height: 24px;
+		  padding: 12px 20px;
+        }
 
-<svg width="0" height="0" class="hidden">
-  <symbol fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 21 20" id="star">
-    <g clip-path="url(#a)">
-      <path d="M10.5 15.22 4.62 18.5l1.32-6.61L.99 7.33l6.69-.8L10.5.42l2.82 6.11 6.7.8-4.95 4.57 1.3 6.6-5.87-3.28Zm0-1.91 3.54 1.98-.8-3.98 2.99-2.75-4.03-.48-1.7-3.68-1.7 3.68-4.03.48 2.98 2.75-.79 3.98 3.54-1.98Z" fill="#171717"></path>
-    </g>
-    <defs>
-      <clipPath id="a">
-        <path fill="#fff" transform="translate(.5)" d="M0 0h20v20H0z"></path>
-      </clipPath>
-    </defs>
-  </symbol>
-</svg>
+        :host([size="2xl"]) button {
+          font-size: 18px;
+		  font-weight: 500;
+		  line-height: 28px;
+		  padding: 16px 24px;
+        }
+        /* ==== Disabled ==== */
+        :host([disabled]) button {
+          opacity: 0.6;
+          cursor: not-allowed;
+        }
 
-	  <main>
-        <custom-button variant="primary">Button CTA</custom-button>
-        <custom-button variant="primary">
-            <slot name="icon-left">
-<svg class="icon">
-  <use xlink:href="#star"></use>
-</svg>
-			</slot>              
-			Button CTA
-		</custom-button>
-        <custom-button variant="primary">
-        Button CTA
-		<slot name="icon-right">
-<svg class="icon">
-  <use xlink:href="#star"></use>
-</svg>
-		</slot>
-		</custom-button>
-        <custom-button variant="primary">Button CTA</custom-button>
-        <custom-button variant="primary"><svg class="icon">
-  <use xlink:href="#star"></use>
-</svg></custom-button>
-	  </main>
-    
-
-    <div class="credits" data-gfe-screenshot-exclude="true"> A challenge by <a href="https://www.greatfrontend.com/projects?ref=challenges" target="_blank">GreatFrontEnd Projects</a>. Built by <a href="https://www.greatfrontend.com/projects/u/dreamonautre" target="_blank">dreamonaut</a>.</div>
-
-
-
-
-    <script type="text/javascript" src="js/index.js" ></script>
+        /* Дополнительные CSS-переменные для внешней кастомизации */
+        /* Пример: --button-background-color: red; */
+        /*button {*/
+        /*  --button-background-color: var(--_button-background-color, inherit);*/
+        /*  --button-color: var(--_button-color, inherit);*/
+        /*  --button-border-color: var(--_button-border-color, inherit);*/
+        /*  background-color: var(--button-background-color);*/
+        /*  color: var(--button-color);*/
+        /*  border-color: var(--button-border-color);*/
+        /*}*/
+      </style>
+      <button>
+        <slot name="icon-left"></slot>
+        <slot></slot>
+        <slot name="icon-right"></slot>
+      </button>
+    </template>
+    <svg width="0" height="0" class="hidden">
+      <symbol fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 21 20" id="star">
+        <g clip-path="url(#a)">
+          <path d="M10.5 15.22 4.62 18.5l1.32-6.61L.99 7.33l6.69-.8L10.5.42l2.82 6.11 6.7.8-4.95 4.57 1.3 6.6-5.87-3.28Zm0-1.91 3.54 1.98-.8-3.98 2.99-2.75-4.03-.48-1.7-3.68-1.7 3.68-4.03.48 2.98 2.75-.79 3.98 3.54-1.98Z" fill="currentColor"></path>
+        </g>
+      </symbol>
+    </svg>
+    <main>
+	  <custom-button variant="primary" size="md">
+		  <span class="button-title">Button CTA</span>
+	  </custom-button>
+      <custom-button variant="primary" size="lg">
+        <span slot="icon-left">
+            <svg class="icon">
+              <use xlink:href="#star"></use>
+            </svg>
+        </span>
+		<span class="button-title">Button CTA</span>
+      </custom-button>
+      <custom-button variant="primary" size="xl">
+        <span class="button-title">Button CTA</span>
+        <span slot="icon-right">
+          <svg class="icon">
+            <use xlink:href="#star"></use>
+          </svg>
+        </span>
+      </custom-button>
+	  <custom-button variant="primary" size="2xl">
+		  <span class="button-title">Button CTA</span>
+	  </custom-button>
+      <custom-button variant="primary">
+		  <slot>
+        <div>
+          <svg class="icon">
+            <use xlink:href="#star"></use>
+          </svg>
+        </div>
+		  </slot>
+      </custom-button>
+    </main>
+    <div class="credits" data-gfe-screenshot-exclude="true"> A challenge by <a href="https://www.greatfrontend.com/projects?ref=challenges" target="_blank">GreatFrontEnd Projects</a>. Built by <a href="https://www.greatfrontend.com/projects/u/dreamonautre" target="_blank">dreamonaut</a>. </div>
+    <script type="text/javascript" src="js/index.js"></script>
   </body>
 </html>
