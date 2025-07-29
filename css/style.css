@@ -32,11 +32,18 @@ body {
 }
 
 main {
-  padding-top: 80px;
+  padding-top: 112px;
   display: flex;
-  gap: 40px;
+  flex-direction: column;
+  gap: 48px;
 }
 
 .button-title {
   padding: 0 2px;
+}
+
+.buttons-container {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
 }

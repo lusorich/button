@@ -10,10 +10,6 @@
     <link rel="stylesheet" href="css/style.css" />
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="icon" href="img/favicon.ico" sizes="any" />
-    <style>
-      /* You may write styles inside this 
-			<style> tag or within `css/style.css`. */
-    </style>
   </head>
   <body>
     <template id="custom-button-template">
@@ -37,62 +33,106 @@
           padding-left: 6px;
 		}
 
+
+
         /* ==== Variant Styles ==== */
-        :host([variant="primary"]) button {
+		:host([variant="contained"][color="primary"]) button {
           background-color: #4338CA;
-          color: white;
+          color: #FFFFFF;
+		}
+		:host([variant="contained"][color="error"]) button {
+          background-color: #DC2626;
+          color: #FFFFFF;
+		}
+		:host([variant="outlined"]) button {
+          background-color: unset;
+          border: 0.5px solid #E5E5E5;
+          color: #000000;
+		}
+
+        :host([variant="contained"]) button,
+		:host([variant="outlined"]) button {
           box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.10), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
 		  border-radius: 4px;
         }
+
+        :host([variant="link"]) button {
+		  background-color: unset;
+          color: #4338CA;
+        }
+
+   :host([variant="link-color"]) button {
+          background-color: unset;
+          color: #4338CA;
+        }
+
+   :host([variant="link-gray"]) button {
+          background-color: unset;
+          color: #525252;
+        }
+
+
 
         :host([variant="primary"]) button:hover {
         
         }
 
         /* ==== Size Styles ==== */
+		:host(:is([variant="contained"], [variant="outlined"],
+			[variant="link"])[size="2xl"][icon-only]) button {
+		          padding: 18px;
+		}
+
+		:host(:is([variant="contained"], [variant="outlined"],
+			[variant="link"])[size="md"]) button {
+		          padding: 10px 14px;
+		}
+
+		:host(:is([variant="contained"], [variant="outlined"],
+			[variant="link"])[size="lg"]) button {
+		          padding: 10px 16px;
+		}
+
+		:host(:is([variant="contained"], [variant="outlined"],
+			[variant="link"])[size="xl"]) button {
+		          padding: 12px 20px;
+		}
+
+		:host(:is([variant="contained"], [variant="outlined"],
+			[variant="link"])[size="2xl"]) button {
+		          padding: 16px 24px;
+		}
+
+
+
         :host([size="md"]) button {
           font-size: 14px;
 		  font-weight: 500;
 		  line-height: 20px;
-		  padding: 10px 14px;
         }
 
         :host([size="lg"]) button {
           font-size: 16px;
 		  font-weight: 500;
 		  line-height: 24px;
-		  padding: 10px 16px;
         }
 
         :host([size="xl"]) button {
           font-size: 16px;
 		  font-weight: 500;
 		  line-height: 24px;
-		  padding: 12px 20px;
         }
 
         :host([size="2xl"]) button {
           font-size: 18px;
 		  font-weight: 500;
 		  line-height: 28px;
-		  padding: 16px 24px;
         }
         /* ==== Disabled ==== */
         :host([disabled]) button {
           opacity: 0.6;
           cursor: not-allowed;
         }
-
-        /* Дополнительные CSS-переменные для внешней кастомизации */
-        /* Пример: --button-background-color: red; */
-        /*button {*/
-        /*  --button-background-color: var(--_button-background-color, inherit);*/
-        /*  --button-color: var(--_button-color, inherit);*/
-        /*  --button-border-color: var(--_button-border-color, inherit);*/
-        /*  background-color: var(--button-background-color);*/
-        /*  color: var(--button-color);*/
-        /*  border-color: var(--button-border-color);*/
-        /*}*/
       </style>
       <button>
         <slot name="icon-left"></slot>
@@ -108,10 +148,11 @@
       </symbol>
     </svg>
     <main>
-	  <custom-button variant="primary" size="md">
+		<div class="buttons-container">
+	  <custom-button variant="contained" color="primary" size="md">
 		  <span class="button-title">Button CTA</span>
 	  </custom-button>
-      <custom-button variant="primary" size="lg">
+      <custom-button variant="contained" color="primary" size="lg">
         <span slot="icon-left">
             <svg class="icon">
               <use xlink:href="#star"></use>
@@ -119,7 +160,7 @@
         </span>
 		<span class="button-title">Button CTA</span>
       </custom-button>
-      <custom-button variant="primary" size="xl">
+      <custom-button variant="contained" color="primary" size="xl">
         <span class="button-title">Button CTA</span>
         <span slot="icon-right">
           <svg class="icon">
@@ -127,18 +168,178 @@
           </svg>
         </span>
       </custom-button>
-	  <custom-button variant="primary" size="2xl">
+	  <custom-button variant="contained" color="primary" size="2xl">
 		  <span class="button-title">Button CTA</span>
 	  </custom-button>
-      <custom-button variant="primary">
-		  <slot>
-        <div>
+      <custom-button variant="contained" color="primary" icon-only size="2xl">
+		  <span>
+            <svg class="icon">
+              <use xlink:href="#star"></use>
+            </svg>
+		  </span>
+      </custom-button>
+	  </div>
+
+		  <div class="buttons-container">
+	  <custom-button variant="outlined" size="md">
+		  <span class="button-title">Button CTA</span>
+	  </custom-button>
+      <custom-button variant="outlined" size="lg">
+        <span slot="icon-left">
+            <svg class="icon">
+              <use xlink:href="#star"></use>
+            </svg>
+        </span>
+		<span class="button-title">Button CTA</span>
+      </custom-button>
+      <custom-button variant="outlined" size="xl">
+        <span class="button-title">Button CTA</span>
+        <span slot="icon-right">
           <svg class="icon">
             <use xlink:href="#star"></use>
           </svg>
-        </div>
-		  </slot>
+        </span>
       </custom-button>
+	  <custom-button variant="outlined" size="2xl">
+		  <span class="button-title">Button CTA</span>
+	  </custom-button>
+      <custom-button variant="outlined" icon-only size="2xl">
+		  <span>
+            <svg class="icon">
+              <use xlink:href="#star"></use>
+            </svg>
+		  </span>
+      </custom-button>
+		  </div>
+
+		  <div class="buttons-container">
+	  <custom-button variant="link" size="md">
+		  <span class="button-title">Button CTA</span>
+	  </custom-button>
+      <custom-button variant="link" size="lg">
+        <span slot="icon-left">
+            <svg class="icon">
+              <use xlink:href="#star"></use>
+            </svg>
+        </span>
+		<span class="button-title">Button CTA</span>
+      </custom-button>
+      <custom-button variant="link" size="xl">
+        <span class="button-title">Button CTA</span>
+        <span slot="icon-right">
+          <svg class="icon">
+            <use xlink:href="#star"></use>
+          </svg>
+        </span>
+      </custom-button>
+	  <custom-button variant="link" size="2xl">
+		  <span class="button-title">Button CTA</span>
+	  </custom-button>
+      <custom-button variant="link" icon-only size="2xl">
+		  <span>
+            <svg class="icon">
+              <use xlink:href="#star"></use>
+            </svg>
+		  </span>
+      </custom-button>
+		  </div>
+
+ <div class="buttons-container">
+	  <custom-button variant="text" color="indigo" size="md">
+		  <span class="button-title">Button CTA</span>
+	  </custom-button>
+      <custom-button variant="text" color="indigo" size="lg">
+        <span slot="icon-left">
+            <svg class="icon">
+              <use xlink:href="#star"></use>
+            </svg>
+        </span>
+		<span class="button-title">Button CTA</span>
+      </custom-button>
+      <custom-button variant="text" color="indigo" size="xl">
+        <span class="button-title">Button CTA</span>
+        <span slot="icon-right">
+          <svg class="icon">
+            <use xlink:href="#star"></use>
+          </svg>
+        </span>
+      </custom-button>
+	  <custom-button variant="text" color="indigo" size="2xl">
+		  <span class="button-title">Button CTA</span>
+	  </custom-button>
+      <custom-button variant="text" color="indigo" icon-only size="2xl">
+		  <span>
+            <svg class="icon">
+              <use xlink:href="#star"></use>
+            </svg>
+		  </span>
+      </custom-button>
+		  </div>
+
+ <div class="buttons-container">
+	  <custom-button variant="text" color="gray" size="md">
+		  <span class="button-title">Button CTA</span>
+	  </custom-button>
+      <custom-button variant="text" color="gray" size="lg">
+        <span slot="icon-left">
+            <svg class="icon">
+              <use xlink:href="#star"></use>
+            </svg>
+        </span>
+		<span class="button-title">Button CTA</span>
+      </custom-button>
+      <custom-button variant="text" color="gray" size="xl">
+        <span class="button-title">Button CTA</span>
+        <span slot="icon-right">
+          <svg class="icon">
+            <use xlink:href="#star"></use>
+          </svg>
+        </span>
+      </custom-button>
+	  <custom-button variant="text" color="gray" size="2xl">
+		  <span class="button-title">Button CTA</span>
+	  </custom-button>
+      <custom-button variant="text" color="gray" icon-only size="2xl">
+		  <span>
+            <svg class="icon">
+              <use xlink:href="#star"></use>
+            </svg>
+		  </span>
+      </custom-button>
+		  </div>
+
+		  <div class="buttons-container">
+	  <custom-button variant="contained" color="error" size="md">
+		  <span class="button-title">Button CTA</span>
+	  </custom-button>
+      <custom-button variant="contained" color="error" size="lg">
+        <span slot="icon-left">
+            <svg class="icon">
+              <use xlink:href="#star"></use>
+            </svg>
+        </span>
+		<span class="button-title">Button CTA</span>
+      </custom-button>
+      <custom-button variant="contained" color="error" size="xl">
+        <span class="button-title">Button CTA</span>
+        <span slot="icon-right">
+          <svg class="icon">
+            <use xlink:href="#star"></use>
+          </svg>
+        </span>
+      </custom-button>
+	  <custom-button variant="contained" color="error" size="2xl">
+		  <span class="button-title">Button CTA</span>
+	  </custom-button>
+      <custom-button variant="contained" color="error" icon-only size="2xl">
+		  <span>
+            <svg class="icon">
+              <use xlink:href="#star"></use>
+            </svg>
+		  </span>
+      </custom-button>
+
+		  </div>
     </main>
     <div class="credits" data-gfe-screenshot-exclude="true"> A challenge by <a href="https://www.greatfrontend.com/projects?ref=challenges" target="_blank">GreatFrontEnd Projects</a>. Built by <a href="https://www.greatfrontend.com/projects/u/dreamonautre" target="_blank">dreamonaut</a>. </div>
     <script type="text/javascript" src="js/index.js"></script>
