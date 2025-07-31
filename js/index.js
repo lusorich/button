@@ -44,17 +44,17 @@ template.innerHTML = `
         }
 
         :host([variant="contained"][color="error"]) button {
-          background-color: #DC2626;
+          background-color: var(--red-600);
           color: var(--white);
 
           &:hover,
           &:focus-visible {
-            background-color: #B91C1C;
+            background-color: var(--red-700);
           }
 
           &:focus-visible {
             outline: none;
-            box-shadow: 0 0 0 1px #D92D20, 0 0 0 4px rgba(217, 45, 32, 0.12);
+            box-shadow: 0 0 0 1px var(--red-100), 0 0 0 4px rgba(217, 45, 32, 0.12);
             border-radius: 4px;
           }
 
@@ -67,12 +67,12 @@ template.innerHTML = `
 
         :host([variant="outlined"]) button {
           background-color: unset;
-          border: 0.5px solid #E5E5E5;
+          border: 0.5px solid var(--neutral-200);
           color: var(--black);
 
           &:hover,
           &:focus-visible {
-            background-color: #FAFAFA;
+            background-color: var(--neutral-50);
           }
 
           &:focus-visible {
@@ -101,18 +101,18 @@ template.innerHTML = `
 
           &:hover,
           &:focus-visible {
-            background-color: #FAFAFA;
+            background-color: var(--neutral-50);
+            border-radius: 4px;
           }
 
           &:focus-visible {
             outline: none;
             box-shadow: 0 0 0 4px rgba(68, 76, 231, 0.12);
-            border-radius: 4px;
           }
 
           &:disabled {
             background-color: unset;
-            color: #A3A3A3;
+            color: var(--neutral-400);
             box-shadow: none;
           }
         }
@@ -137,16 +137,16 @@ template.innerHTML = `
           }
 
           &:disabled {
-            color: #A3A3A3;
+            color: var(--neutral-400);
           }
         }
 
         :host([variant="text"][color="gray"]) button {
-          color: #525252;
+          color: var(--neutral-600);
 
           &:hover,
           &:focus-visible {
-            color: #171717;
+            color: var(--neutral-900);
           }
 
           &:focus-visible {
@@ -156,7 +156,7 @@ template.innerHTML = `
           }
 
           &:disabled {
-            color: #A3A3A3;
+            color: var(--neutral-400);
           }
         }
 
@@ -230,7 +230,8 @@ class CustomButton extends HTMLElement {
     super();
 
     this.attachShadow({
-      mode: 'open'
+      mode: 'open',
+	  delegatesFocus: true
     });
 
     const template = document.getElementById('custom-button-template').content.cloneNode(true);
@@ -239,4 +240,3 @@ class CustomButton extends HTMLElement {
 }
 
 customElements.define('custom-button', CustomButton);
-// Dont forget to change sprite
