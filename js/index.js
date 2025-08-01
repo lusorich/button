@@ -162,7 +162,7 @@ template.innerHTML = `
 
         /* ==== Size Styles ==== */
         :host(:is([variant="contained"], [variant="link"])[size="2xl"][icon-only]) button {
-          padding: 16px;
+          padding: 18px;
         }
 
         :host(:is([variant="contained"], [variant="link"])[size="md"]) button {
@@ -182,7 +182,7 @@ template.innerHTML = `
         }
 
         :host(:is([variant="outlined"])[size="2xl"][icon-only]) button {
-          padding: 15px;
+          padding: 17px;
         }
 
         :host(:is([variant="outlined"])[size="md"]) button {
