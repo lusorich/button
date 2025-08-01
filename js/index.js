@@ -161,29 +161,44 @@ template.innerHTML = `
         }
 
         /* ==== Size Styles ==== */
-        :host(:is([variant="contained"], [variant="outlined"],
-            [variant="link"])[size="2xl"][icon-only]) button {
+        :host(:is([variant="contained"], [variant="link"])[size="2xl"][icon-only]) button {
           padding: 16px;
         }
 
-        :host(:is([variant="contained"], [variant="outlined"],
-            [variant="link"])[size="md"]) button {
+        :host(:is([variant="contained"], [variant="link"])[size="md"]) button {
           padding: 10px 14px;
         }
 
-        :host(:is([variant="contained"], [variant="outlined"],
-            [variant="link"])[size="lg"]) button {
+        :host(:is([variant="contained"], [variant="link"])[size="lg"]) button {
           padding: 10px 16px;
         }
 
-        :host(:is([variant="contained"], [variant="outlined"],
-            [variant="link"])[size="xl"]) button {
+        :host(:is([variant="contained"], [variant="link"])[size="xl"]) button {
           padding: 12px 20px;
         }
 
-        :host(:is([variant="contained"], [variant="outlined"],
-            [variant="link"])[size="2xl"]) button {
+        :host(:is([variant="contained"], [variant="link"])[size="2xl"]) button {
           padding: 16px 24px;
+        }
+
+        :host(:is([variant="outlined"])[size="2xl"][icon-only]) button {
+          padding: 15px;
+        }
+
+        :host(:is([variant="outlined"])[size="md"]) button {
+          padding: 9px 13px;
+        }
+
+        :host(:is([variant="outlined"])[size="lg"]) button {
+          padding: 9px 15px;
+        }
+
+        :host(:is([variant="outlined"])[size="xl"]) button {
+          padding: 11px 19px;
+        }
+
+        :host(:is([variant="outlined"])[size="2xl"]) button {
+          padding: 15px 23px;
         }
 
         :host([size="md"]) button {
